@@ -1,80 +1,79 @@
-STEPS:
+# Neural Style Transfer
 
-1. add desired images (style and content) to 'image' folder
+### What is it?
 
-to set the style and content images:
+Style transfer is the synthesis of two images, creating an output that has the content of one image and the style of the other.
 
-2. run: python neural_style.py --style_image images/style_image --content_image images/content_image
+## How it Works
 
+### Concept
 
+The goal of neural style transfer is to minimize how different the content and style are between two images. This involves taking the content of one image and blending it with the artistic style of another image.
 
+### Prerequisite Knowledge
 
-what is it?
-Style transfer is the synthesis of two images, creating output with the content of one image, and the style of the other.
+#### Tensors
+Tensors are multi-dimensional arrays, essential for storing data in neural networks. They allow the network to process and learn from the data efficiently.
+- **Analogy**: Imagine one block equals one number. A row of these blocks is a vector. Stacking many rows of blocks on top of each other forms a matrix. Stacking many matrices results in a tensor.
 
+#### GPUs vs. CPUs for Machine Learning
+- **CPUs**: Good for tasks that require sequential computing and multi-threading.
+- **GPUs**: Better suited for tasks that require parallel computing, like performing large scale matrix multiplications essential in neural networks.
 
-How it works:
+## Steps to Perform Style Transfer
 
-concept:
-to minimize how how different the content and style are between two images. 
+### 1. Add Desired Images
+Place your style and content images in the 'images' folder.
 
+### 2. Set the Images
+Run the neural style transfer script by specifying the paths to your images, where:
 
-basic prerequisite knowledge:
-- tensors: 
-analogy: let one block equal one number. a row of these blocks is a vector. if you stack many rows of blocks on top of each other, you get a matrix. 
+style_image.jpg is the name of the style image
+<br>
+content_image.jpg is the name of the content image
 
-if you stack many matrices on top of each other, you get a tensor.
-
-tensors are like the memory of the neural network. they hold lots of data for the network to use and learn, by trying to find patterns. for instance, in an image classification example: if you give the neural network pictures of cats and dogs, the tensors enable the network to classify them to be 'dog' or 'cat' by remembering lots of details.
-
-thus, tensors are the inputs to neural networks.
-
-- gpus vs cpus for machine learning:
-cpus: good for sequential computing and multi-threading
-gpus: good for parallel computing (can perform a ton of linear algebra and matrix multiplication)
-
-
-now let's dive in.
-
+```bash
+python neural_style.py --style_image images/style_image.jpg --content_image images/content_image.jpg
 ```
+
+### 3. Image Preprocessing
+Images need to be preprocessed to fit the neural network's requirements. This typically includes resizing and normalization.
+```bash
+from torchvision import transforms
 loader = transforms.Compose([
     transforms.Resize(imsize),  # scale imported image
-    transforms.ToTensor()])  # transform it into a torch tensor
+    transforms.ToTensor()       # transform it into a torch tensor
+])
 ```
 
-we often need to preprocess images into consistent formats before feeding them into a neural network. this includes resizing, normaization, and converting the images into tensors.
-
-
-```.unsqueeze(0)```
-
-adds a batch dimension to the tensor (required by the neural network). 
-
-neural networks process data in batches to leverage parallelism and improve computational efficiency. 
-
-
-- content loss
-
-the content loss determines how different the generated image is from the target content image (best achieved output).
-
-how is it calculated? it uses a pre-trained CNN, in this case, VGG19, to extract feature maps (feature maps capture levels of abstraction in the image like edges, textures, shapes, and objects)
-
-the difference is calculated using the mean squared error.
-
-
+Add a batch dimension required by neural networks for batch processing:
+```bash
+.unsqueeze(0)
 ```
-class ContentLoss(nn.Module):
+
+### 4. Content Loss
+Content loss measures how much the content of the generated image differs from the content of the target image. It's calculated using a pre-trained CNN, like VGG19, which extracts feature maps from both images.
+```bash
+import torch.nn.functional as F
+class ContentLoss(torch.nn.Module):
     def __init__(self, target):
         super(ContentLoss, self).__init__()
-        self.target = target.detach()  # detach: don't track changes to this image - need to treat as a constant reference (not something that changes during the training process)
-
+        self.target = target.detach()  # detach target from the graph to treat as a constant reference
     def forward(self, input):
-        self.loss = F.mse_loss(input, self.target)  # calculate the mean squared error (measures how similar two images are by comparing the difference in their pixel values - the smaller the loss, the more similar the images)
+        self.loss = F.mse_loss(input, self.target)  # calculate the mean squared error
         return input  # return input image unchanged
-
 ```
-ContentLoss: Inherits from nn.Module and calculates the content loss.
-detach(): Detaches the target tensor from the computation graph, treating it as a constant.
-F.mse_loss(input, self.target): Computes the mean squared error between the input and the target.
-return input: Returns the input tensor unchanged.
 
+### 5. Running the Style Transfer
+Optimize the generated image to minimize the content and style losses:
 
+### Result
+After running the style transfer, you will get an image that combines the content of the content image with the artistic style of the style image - a successful style transfer!!
+
+## Connect with Me
+
+[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/DorsaRoh)
+[![Twitter](https://img.shields.io/badge/-Twitter-1DA1F2?style=for-the-badge&logo=twitter)](https://twitter.com/Dorsa_Rohani)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/dorsarohani/)
+
+Feel free to contribute 😊
