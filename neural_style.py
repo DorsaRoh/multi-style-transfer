@@ -16,7 +16,7 @@ parser.add_argument('--content_image', type=str, required=True, help='Path to th
 
 args = parser.parse_args()
 
-# determine device to run the network
+# device to run the network
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 torch.set_default_device(device)
 
