@@ -4,7 +4,7 @@ STEPS:
 
 to set the style and content images:
 
-2. run: python neural_style.py --style_image path/to/style_image.jpg --content_image path/to/content_image.jpg
+2. run: python neural_style.py --style_image images/style_image --content_image images/content_image
 
 
 

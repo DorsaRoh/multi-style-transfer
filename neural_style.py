@@ -27,17 +27,27 @@ loader = transforms.Compose([
     transforms.Resize(imsize),  # scale imported image
     transforms.ToTensor()])  # transform it into a torch tensor
 
-def image_loader(image_name):
+# function to load an image and convert it to a tensor
+def image_loader(image_name, imsize):
     image = Image.open(image_name)
-    # fake batch dimension required to fit network's input dimensions
-    image = loader(image).unsqueeze(0)  # add a dimension to the tensor
+    transform = transforms.Compose([
+        transforms.Resize(imsize),  # scale imported image
+        transforms.ToTensor()])  # transform it into a torch tensor
+    image = transform(image).unsqueeze(0)  # add a dimension to the tensor
     return image.to(device, torch.float)
 
-style_img = image_loader(args.style_image)
-content_img = image_loader(args.content_image)
+# load images to get their sizes
+style_img_pil = Image.open(args.style_image)
+content_img_pil = Image.open(args.content_image)
 
-assert style_img.size() == content_img.size(), \
-    "Style and content images must be imported in the same size"
+# find the smaller size of the two images
+style_size = style_img_pil.size
+content_size = content_img_pil.size
+new_size = (min(style_size[0], content_size[0]), min(style_size[1], content_size[1]))
+
+# load and resize images to the new_size
+style_img = image_loader(args.style_image, new_size)
+content_img = image_loader(args.content_image, new_size)
 
 unloader = transforms.ToPILImage()  # reconvert into PIL image
 plt.ion()
