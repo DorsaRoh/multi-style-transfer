@@ -21,8 +21,9 @@ are the names of the style images
 ```bash
 python neural_style.py --style_images images/style_image1.jpg images/style-images/style_image2.jpg --content_image images/content_image.jpg
 ```
-<i>replace <b>style_images1.jpg</b> and <b>style_images2.jpg</b> with the names of your style images. Feel free to add more images as well</i>
+<i>replace <b>style_images1.jpg</b> and <b>style_images2.jpg</b> with the names of your style images. Add as many  images as desired.</i>
 
+The weights of the content images and style images can be changed through the variables `content_weight` and `style_weight`.
 
 
 ## How it Works
