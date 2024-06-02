@@ -37,6 +37,7 @@ Run the neural style transfer script by specifying the paths to your images, whe
 ```bash
 python neural_style.py --style_images images/style_image1.jpg images/style-images/style_image2.jpg --content_image images/content_image.jpg
 ```
+replace <u>style_images1.jpg</u> and <u>style_images2.jpg</u> with the names of your style images. Feel free to add more images as well
 
 ### 3. Image Preprocessing
 Images need to be preprocessed to fit the neural network's requirements. This typically includes resizing and normalization.
