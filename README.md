@@ -77,3 +77,7 @@ After running the style transfer, you will get an image that combines the conten
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/dorsarohani/)
 
 Feel free to contribute 😊
+
+
+
+python neural_style.py --style_images images/style-images/hi.png images/style-images/picasso.jpg --content_image images/dancing.jpg
