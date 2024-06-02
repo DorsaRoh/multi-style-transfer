@@ -1,8 +1,8 @@
-# Multiple Image Neural Style Transfer
+# Neural Style Transfer for Multiple Images
 
 ### What is it?
 
-Multiple style transfer is the synthesis of multiple images, creating an output that has the content of one image and the styles of  other images.
+Style transfer (for multiple images) is the synthesis of images, creating an output that has the content of one image and the styles of  other images.
 
 ## How it Works
 
