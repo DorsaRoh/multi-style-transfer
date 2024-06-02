@@ -14,7 +14,9 @@ Run the neural style transfer script by specifying the paths to your images, whe
 `style_image2.jpg` 
 `style_image3.jpg` 
 etc.
-are the names of the style images
+are the names of the style images.
+
+Two sample images are provided in the `images` folder.
 
 <i>note: the images do <b>not</b> need to be .jpg</i>
 
