@@ -1,14 +1,14 @@
-# Neural Style Transfer
+# Multiple Image Neural Style Transfer
 
 ### What is it?
 
-Style transfer is the synthesis of two images, creating an output that has the content of one image and the style of the other.
+Multiple style transfer is the synthesis of multiple images, creating an output that has the content of one image and the styles of  other images.
 
 ## How it Works
 
 ### Concept
 
-The goal of neural style transfer is to minimize how different the content and style are between two images. This involves taking the content of one image and blending it with the artistic style of another image.
+The goal of neural style transfer is to minimize how different the content and style are between images. This involves taking the content of one image and blending it with the artistic style of others.
 
 ### Prerequisite Knowledge
 
@@ -28,12 +28,14 @@ Place your style and content images in the 'images' folder.
 ### 2. Set the Images
 Run the neural style transfer script by specifying the paths to your images, where:
 
-style_image.jpg is the name of the style image
+`content_image.jpg` is the name of the content image
 <br>
-content_image.jpg is the name of the content image
+`style_image.jpg` are the names of the style images
+
+<i>note: the images do <b>not</b> need to be .jpg</i>
 
 ```bash
-python neural_style.py --style_image images/style_image.jpg --content_image images/content_image.jpg
+python neural_style.py --style_images images/style_image1.jpg images/style-images/style_image2.jpg --content_image images/content_image.jpg
 ```
 
 ### 3. Image Preprocessing
@@ -68,7 +70,7 @@ class ContentLoss(torch.nn.Module):
 Optimize the generated image to minimize the content and style losses:
 
 ### Result
-After running the style transfer, you will get an image that combines the content of the content image with the artistic style of the style image - a successful style transfer!!
+After running the style transfer, you will get an image that combines the content of the content image with the artistic style of the style image - a successful style transfer!
 
 ## Connect with Me
 
@@ -80,4 +82,3 @@ Feel free to contribute 😊
 
 
 
-python neural_style.py --style_images images/style-images/hi.png images/style-images/picasso.jpg --content_image images/dancing.jpg
