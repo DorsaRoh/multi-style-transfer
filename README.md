@@ -4,21 +4,6 @@
 
 Style transfer (for multiple images) is the synthesis of images, creating an output that has the content of one image and the styles of  other images.
 
-## How it Works
-
-### Concept
-
-The goal of neural style transfer is to minimize how different the content and style are between images. This involves taking the content of one image and blending it with the artistic style of others.
-
-### Prerequisite Knowledge
-
-#### Tensors
-Tensors are multi-dimensional arrays, essential for storing data in neural networks. They allow the network to process and learn from the data efficiently.
-- **Analogy**: Imagine one block equals one number. A row of these blocks is a vector. Stacking many rows of blocks on top of each other forms a matrix. Stacking many matrices results in a tensor.
-
-#### GPUs vs. CPUs for Machine Learning
-- **CPUs**: Good for tasks that require sequential computing and multi-threading.
-- **GPUs**: Better suited for tasks that require parallel computing, like performing large scale matrix multiplications essential in neural networks.
 
 ## To Run:
 Run the neural style transfer script by specifying the paths to your images, where:
@@ -37,6 +22,25 @@ are the names of the style images
 python neural_style.py --style_images images/style_image1.jpg images/style-images/style_image2.jpg --content_image images/content_image.jpg
 ```
 <i>replace <b>style_images1.jpg</b> and <b>style_images2.jpg</b> with the names of your style images. Feel free to add more images as well</i>
+
+
+
+## How it Works
+
+### Concept
+
+The goal of neural style transfer is to minimize how different the content and style are between images. This involves taking the content of one image and blending it with the artistic style of others.
+
+### Prerequisite Knowledge
+
+#### Tensors
+Tensors are multi-dimensional arrays, essential for storing data in neural networks. They allow the network to process and learn from the data efficiently.
+- **Analogy**: Imagine one block equals one number. A row of these blocks is a vector. Stacking many rows of blocks on top of each other forms a matrix. Stacking many matrices results in a tensor.
+
+#### GPUs vs. CPUs for Machine Learning
+- **CPUs**: Good for tasks that require sequential computing and multi-threading.
+- **GPUs**: Better suited for tasks that require parallel computing, like performing large scale matrix multiplications essential in neural networks.
+
 
 # How it works:
 
