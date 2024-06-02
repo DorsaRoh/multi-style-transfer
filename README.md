@@ -20,17 +20,16 @@ Tensors are multi-dimensional arrays, essential for storing data in neural netwo
 - **CPUs**: Good for tasks that require sequential computing and multi-threading.
 - **GPUs**: Better suited for tasks that require parallel computing, like performing large scale matrix multiplications essential in neural networks.
 
-## Steps to Perform Style Transfer
-
-### 1. Add Desired Images
-Place your style and content images in the 'images' folder.
-
-### 2. Set the Images
+## To Run:
 Run the neural style transfer script by specifying the paths to your images, where:
 
 `content_image.jpg` is the name of the content image
 <br>
-`style_image.jpg` are the names of the style images
+`style_image1.jpg` 
+`style_image2.jpg` 
+`style_image3.jpg` 
+etc.
+are the names of the style images
 
 <i>note: the images do <b>not</b> need to be .jpg</i>
 
@@ -38,6 +37,22 @@ Run the neural style transfer script by specifying the paths to your images, whe
 python neural_style.py --style_images images/style_image1.jpg images/style-images/style_image2.jpg --content_image images/content_image.jpg
 ```
 <i>replace <b>style_images1.jpg</b> and <b>style_images2.jpg</b> with the names of your style images. Feel free to add more images as well</i>
+
+# How it works:
+
+### 1. Add Desired Images
+Place your style and content images in the 'images' folder.
+
+### 2. Set the Images
+`content_image.jpg` is the name of the content image
+<br>
+`style_image1.jpg` 
+`style_image2.jpg` 
+`style_image3.jpg` 
+etc.
+are the names of the style images
+
+<i>note: the images do <b>not</b> need to be .jpg</i>
 
 ### 3. Image Preprocessing
 Images need to be preprocessed to fit the neural network's requirements. This typically includes resizing and normalization.
@@ -67,8 +82,6 @@ class ContentLoss(torch.nn.Module):
         return input  # return input image unchanged
 ```
 
-### 5. Running the Style Transfer
-Optimize the generated image to minimize the content and style losses:
 
 ### Result
 After running the style transfer, you will get an image that combines the content of the content image with the artistic style of the style image - a successful style transfer!
