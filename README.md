@@ -4,6 +4,9 @@
 
 Style transfer (for multiple images) is the synthesis of images, creating an output that has the content of one image and the styles of  other images.
 
+![Image1](assets/1.png)
+![Image2](assets/2.png)
+
 
 ## To Run:
 Run the neural style transfer script by specifying the paths to your images, where:
